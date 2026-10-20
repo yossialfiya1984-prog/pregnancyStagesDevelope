@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>התפתחות העובר בשלבי ההריון</title>
+<meta name="description" content="שיעור בביולוגיה לתלמידי תיכון: מההפריה ועד הלידה, עם סרטון, פודקאסט וסקירה מבוססת מקורות.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf7f4;
+    --surface: #ffffff;
+    --ink: #2a2230;
+    --muted: #6b6070;
+    --line: #ece3dd;
+    --accent: #c4566e;
+    --accent-soft: #fbe9ed;
+    --teal: #2f7f7a;
+    --teal-soft: #e3f2f0;
+    --shadow: 0 1px 2px rgba(42, 34, 48, .05), 0 8px 24px rgba(42, 34, 48, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17141a;
+      --surface: #221e26;
+      --ink: #f1ebf3;
+      --muted: #b3a9b8;
+      --line: #3a3340;
+      --accent: #ec8aa0;
+      --accent-soft: #3b2530;
+      --teal: #6cc3bb;
+      --teal-soft: #1f3432;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Heebo", "Segoe UI", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  a { color: var(--teal); }
+  a:hover { color: var(--accent); }
+
+  /* Sticky section navigation */
+  .topnav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topnav .inner {
+    max-width: 1040px; margin: 0 auto; padding: 10px 16px;
+    display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  }
+  .topnav .inner::-webkit-scrollbar { display: none; }
+  .topnav a {
+    flex: none; text-decoration: none; color: var(--muted);
+    font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+  }
+  .topnav a:hover { background: var(--accent-soft); color: var(--accent); }
+
+  /* Hero */
+  header.hero {
+    max-width: 1040px; margin: 0 auto; padding: 56px 16px 32px;
+    display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+  }
+  .eyebrow {
+    display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: .02em;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 4px 12px; border-radius: 999px;
+  }
+  h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.1; margin: 14px 0 12px; font-weight: 800; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 46ch; margin: 0; }
+  .stages { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .stage {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 8px 14px; font-size: 14px; color: var(--muted);
+  }
+  .stage b { color: var(--ink); display: block; font-size: 15px; }
+  .hero-art { width: 220px; height: 220px; }
+
+  main { max-width: 1040px; margin: 0 auto; padding: 0 16px 64px; }
+
+  /* Media */
+  .media { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; margin-bottom: 28px; }
+  .media-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+    padding: 18px; box-shadow: var(--shadow);
+  }
+  .media-card h2 { font-size: 20px; margin: 0 0 4px; display: flex; align-items: center; gap: 8px; }
+  .media-card p { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+  video { width: 100%; border-radius: 12px; background: #000; display: block; }
+  audio { width: 100%; }
+  .podcast-art {
+    aspect-ratio: 16 / 9; border-radius: 12px; margin-bottom: 14px;
+    background: linear-gradient(135deg, var(--accent-soft), var(--teal-soft));
+    display: grid; place-items: center;
+  }
+  .podcast-art svg { width: 38%; height: auto; }
+
+  /* Content cards */
+  section.card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+    padding: 28px clamp(18px, 4vw, 40px); margin-bottom: 20px; box-shadow: var(--shadow);
+  }
+  h2 { font-size: 28px; line-height: 1.25; margin: 0 0 14px; font-weight: 800; }
+  h2 .num {
+    display: inline-grid; place-items: center; width: 38px; height: 38px; margin-left: 12px;
+    border-radius: 12px; background: var(--accent); color: #fff; font-size: 19px; vertical-align: 3px;
+  }
+  h3 { font-size: 20px; margin: 28px 0 8px; color: var(--teal); }
+  p { margin: 0 0 12px; }
+  ul, ol { padding-inline-start: 22px; margin: 0 0 14px; }
+  li { margin-bottom: 6px; }
+  li::marker { color: var(--accent); }
+
+  .table-wrap { overflow-x: auto; margin: 10px 0 16px; border: 1px solid var(--line); border-radius: 12px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; line-height: 1.55; }
+  th, td { text-align: start; padding: 10px 12px; vertical-align: top; border-bottom: 1px solid var(--line); }
+  th { background: var(--teal-soft); color: var(--ink); font-weight: 700; white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--teal-soft) 35%, transparent); }
+
+  /* Quiz */
+  ol.quiz { list-style: none; padding: 0; counter-reset: q; }
+  ol.quiz li { counter-increment: q; margin-bottom: 10px; }
+  ol.quiz details {
+    border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; background: var(--bg);
+  }
+  ol.quiz summary { cursor: pointer; font-weight: 500; list-style: none; }
+  ol.quiz summary::-webkit-details-marker { display: none; }
+  ol.quiz summary::before {
+    content: counter(q); display: inline-grid; place-items: center;
+    width: 26px; height: 26px; margin-left: 10px; border-radius: 8px;
+    background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 14px;
+  }
+  ol.quiz summary strong { font-weight: 500; }
+  ol.quiz summary::after { content: "הצג תשובה"; float: left; font-size: 13px; color: var(--teal); }
+  ol.quiz details[open] summary::after { content: "הסתר"; }
+  ol.quiz details p { margin: 10px 0 0; padding-top: 10px; border-top: 1px dashed var(--line); }
+
+  #sources li { font-size: 15px; }
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 8px 16px 40px; }
+
+  @media (max-width: 760px) {
+    header.hero { grid-template-columns: 1fr; padding-top: 32px; }
+    .hero-art { display: none; }
+    .media { grid-template-columns: 1fr; }
+    h2 { font-size: 24px; }
+    ol.quiz summary::after { float: none; display: block; margin-top: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="ניווט בין פרקי השיעור">
+  <div class="inner">
+    <a href="#media">סרטון ופודקאסט</a>
+<a href="#s1">מבוא</a>
+<a href="#s2">שליש ראשון</a>
+<a href="#s3">שליש שני</a>
+<a href="#s4">שליש שלישי</a>
+<a href="#s5">טבלה מסכמת</a>
+<a href="#s6">האם והעובר</a>
+<a href="#s7">מעקב רפואי</a>
+<a href="#s8">עובדות ומיתוסים</a>
+<a href="#s9">לכיתה</a>
+<a href="#sources">מקורות</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">שיעור בביולוגיה · תיכון</span>
+    <h1>התפתחות העובר בשלבי ההריון</h1>
+    <p class="lead">מתא אחד לתינוק של כ-3.4 ק"ג תוך 40 שבועות: איך זה קורה, מה משפיע על העובר, ואיך עוקבים אחרי ההתפתחות שלו.</p>
+    <div class="stages">
+      <div class="stage"><b>שליש ראשון</b>שבועות 1–13</div>
+      <div class="stage"><b>שליש שני</b>שבועות 14–27</div>
+      <div class="stage"><b>שליש שלישי</b>שבועות 28–40</div>
+    </div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="92" fill="var(--accent-soft)"/>
+    <circle cx="100" cy="100" r="64" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 6"/>
+    <circle cx="100" cy="100" r="30" fill="var(--accent)" opacity=".85"/>
+    <circle cx="90" cy="92" r="9" fill="#fff" opacity=".9"/>
+    <circle cx="111" cy="95" r="7" fill="#fff" opacity=".75"/>
+    <circle cx="99" cy="112" r="8" fill="#fff" opacity=".8"/>
+    <circle cx="160" cy="58" r="10" fill="var(--teal)" opacity=".8"/>
+    <circle cx="40" cy="146" r="6" fill="var(--teal)" opacity=".6"/>
+  </svg>
+</header>
+
+<main>
+  <div class="media" id="media">
+    <div class="media-card">
+      <h2>🎬 סרטון</h2>
+      <p>סקירה חזותית של התפתחות העובר.</p>
+      <video controls preload="metadata" playsinline>
+        <source src="fetal%20development%20-%20video.mp4" type="video/mp4">
+        הדפדפן שלך לא תומך בהצגת וידאו. <a href="fetal%20development%20-%20video.mp4">להורדת הסרטון</a>.
+      </video>
+    </div>
+    <div class="media-card">
+      <h2>🎧 פודקאסט</h2>
+      <p>מתא בודד לעובר: שיחה על השלבים המרכזיים.</p>
+      <div class="podcast-art" aria-hidden="true">
+        <svg viewBox="0 0 120 80">
+          <rect x="6" y="34" width="8" height="12" rx="4" fill="var(--teal)"/>
+          <rect x="22" y="22" width="8" height="36" rx="4" fill="var(--accent)"/>
+          <rect x="38" y="10" width="8" height="60" rx="4" fill="var(--teal)"/>
+          <rect x="54" y="26" width="8" height="28" rx="4" fill="var(--accent)"/>
+          <rect x="70" y="14" width="8" height="52" rx="4" fill="var(--teal)"/>
+          <rect x="86" y="28" width="8" height="24" rx="4" fill="var(--accent)"/>
+          <rect x="102" y="36" width="8" height="8" rx="4" fill="var(--teal)"/>
+        </svg>
+      </div>
+      <audio controls preload="metadata">
+        <source src="podcast-from%20single%20Cell%20to%20an%20embryo.m4a" type="audio/mp4">
+        הדפדפן שלך לא תומך בהשמעת שמע. <a href="podcast-from%20single%20Cell%20to%20an%20embryo.m4a">להורדת הפודקאסט</a>.
+      </audio>
+    </div>
+  </div>
+
+<section id="s1" class="card">
+<h2><span class="num">1</span>מבוא: איך זה מתחיל</h2>
+<p>הריון מתחיל כשתא זרע אחד מפרה ביצית בחצוצרה. התא שנוצר, הזיגוטה, מתחלק בדרכו לרחם ומשתרש בדופן הרחם כשבוע אחרי ההפריה. מכאן מתחילים כ-38 שבועות של התפתחות, או 40 שבועות כשסופרים מהווסת האחרונה.</p>
+<h3>הפריה: איך נוצרת הזיגוטה</h3>
+<ul>
+<li><strong>איפה:</strong> ההפריה מתרחשת בחלק הרחוק של החצוצרה, הקרוב לשחלה. הביצית שורדת רק כ-24 שעות אחרי הביוץ, ולכן אין לה זמן להגיע לרחם בלי שהופרתה (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-1-fertilization" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li><strong>חלון ההפריה:</strong> תאי זרע יכולים לשרוד בחצוצרות 3–5 ימים. לכן יחסי מין בימים שלפני הביוץ יכולים להוביל להריון.</li>
+<li><strong>החדירה:</strong> תאי הזרע עוברים "הבשלה" בדרכי המין של האישה. כשתא זרע נקשר למעטפת הביצית (zona pellucida), הוא משחרר אנזימים שפותחים לו דרך.</li>
+<li><strong>רק זרע אחד:</strong> ברגע שתא זרע אחד חודר, המעטפת משתנה ונחסמת בפני כל השאר. חדירה של שני תאי זרע הייתה יוצרת תא עם שלוש מערכות כרומוזומים, שאינו מסוגל להתפתח.</li>
+<li><strong>הזיגוטה:</strong> לביצית ולזרע יש 23 כרומוזומים כל אחד (תאים הפלואידיים). כשהגרעינים שלהם מתאחדים נוצרת זיגוטה עם 46 כרומוזומים (תא דיפלואידי), חצי מכל הורה.</li>
+</ul>
+<h3>איך נקבע המין</h3>
+<ul>
+<li>הביצית נושאת תמיד כרומוזום <strong>X</strong>. תא הזרע נושא <strong>X</strong> או <strong>Y</strong>. לכן תא הזרע הוא שקובע את המין הכרומוזומלי: XX או XY.</li>
+<li>על כרומוזום Y נמצא הגן <strong>SRY</strong>. הוא מפעיל שרשרת גנים שגורמת להתפתחות אשכים. בלי SRY פעיל מתפתחים רחם וחצוצרות (<a href="https://medlineplus.gov/genetics/gene/sry/" target="_blank" rel="noopener">MedlinePlus Genetics</a>).</li>
+<li>עד סביבות שבוע 9 להריון איברי המין של כל העוברים נראים זהים. ההתמיינות לזכר או לנקבה מתרחשת בשבועות 9–12 (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax</a>), ובאולטרסאונד אפשר לזהות אותה רק כמה שבועות אחר כך.</li>
+</ul>
+<h3>השרשה ברחם</h3>
+<ul>
+<li>בדרכה לרחם הזיגוטה מתחלקת שוב ושוב. אחרי כ-3 ימים נוצר כדור של 16 תאים (מורולה), ואחר כך <strong>בלסטוציסט</strong>: כדור חלול של כ-100 תאים (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li>ההשרשה מתחילה בסוף השבוע הראשון אחרי ההפריה, ומסתיימת עד אמצע השבוע השני. הבלסטוציסט "נובר" לתוך רירית הרחם.</li>
+<li>אחרי ההשרשה, תאי המעטפת החיצונית מפרישים את ההורמון <strong>hCG</strong>. ההורמון שומר על רירית הרחם, ולכן הווסת לא מגיעה. זה גם ההורמון שבדיקת ההריון הביתית מזהה.</li>
+<li>לא כל ביצית מופרית משתרשת: לפי ההערכות, 50%–75% מהבלסטוציסטים לא משתרשים. ב-1%–2% מהמקרים ההשרשה מתרחשת מחוץ לרחם, בדרך כלל בחצוצרה, וזה נקרא <strong>הריון חוץ-רחמי</strong>.</li>
+</ul>
+<h3>איך מחשבים את גיל ההריון, ולמה זה מבלבל</h3>
+<p>יש שתי דרכים לספור, וההפרש ביניהן הוא שבועיים:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>שיטה</th><th>נספר מ...</th><th>משך הריון טיפוסי</th><th>מי משתמש בה</th></tr></thead>
+<tbody>
+<tr><td><strong>גיל הריון</strong> (gestational age)</td><td>היום הראשון של הווסת האחרונה</td><td>40 שבועות (280 יום)</td><td>רופאים, בדיקות, תאריך לידה משוער</td></tr>
+<tr><td><strong>גיל העובר</strong> (fertilization age)</td><td>ההפריה</td><td>כ-38 שבועות</td><td>ספרי עוברות (אמבריולוגיה)</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>למה סופרים מהווסת:</strong> את רגע ההפריה כמעט אי אפשר לדעת, אבל את תאריך הווסת האחרונה רוב הנשים יודעות (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>).</li>
+<li><strong>התוצאה המבלבלת:</strong> ב"שבועות 1–2" של ההריון עוד אין הריון. ההפריה מתרחשת רק בסוף שבוע 2 או בתחילת שבוע 3.</li>
+<li><strong>בספרי לימוד:</strong> הרבה ספרי ביולוגיה סופרים מההפריה. כשכתוב שם "הלב מתחיל לפעום בשבוע 4", מדובר בערך בשבוע 6 לפי ספירת הרופאים.</li>
+<li><strong>בסקירה הזו</strong> כל השבועות נספרים <strong>מהווסת האחרונה</strong>, כמו במרפאה, אלא אם כתוב אחרת.</li>
+<li><strong>תאריך הלידה הוא הערכה:</strong> הריון תקין נמשך 37–42 שבועות (<a href="https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/" target="_blank" rel="noopener">NHS</a>). אולטרסאונד בשליש הראשון מדייק את ההערכה, ולפעמים מזיז את התאריך המשוער.</li>
+</ul>
+</section>
+<section id="s2" class="card">
+<h2><span class="num">2</span>השליש הראשון (שבועות 1–13)</h2>
+<p>בשליש הראשון נוצרים כל איברי הגוף. בסופו העובר ארוך רק כמה סנטימטרים, אבל כבר יש לו לב פועם, מוח, ידיים ורגליים. זו גם התקופה שבה הוא רגיש ביותר לחומרים מזיקים.</p>
+<h3>מהבלסטוציסט לשלוש שכבות נבט</h3>
+<p>לבלסטוציסט יש שני חלקים: <strong>המסה התאית הפנימית</strong>, שממנה יתפתח העובר, ו<strong>הטרופובלסט</strong> (המעטפת החיצונית), שממנו יתפתח החלק העוברי של השליה. בשבוע השלישי אחרי ההפריה (שבוע 5 להריון) מתרחשת <strong>גסטרולציה</strong>: הדיסקית העוברית הופכת משתי שכבות לשלוש שכבות נבט (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>שכבת נבט</th><th>מיקום</th><th>מה מתפתח ממנה</th></tr></thead>
+<tbody>
+<tr><td><strong>אקטודרם</strong></td><td>חיצונית</td><td>מערכת העצבים (מוח, חוט שדרה, עצבים), איברי החושים, עור (אפידרמיס), שיער וציפורניים</td></tr>
+<tr><td><strong>מזודרם</strong></td><td>אמצעית</td><td>שלד, שרירים, רקמת חיבור, לב, כלי דם, כליות</td></tr>
+<tr><td><strong>אנדודרם</strong></td><td>פנימית</td><td>רירית מערכת העיכול, כבד, לבלב, ריאות</td></tr>
+</tbody></table></div>
+<p>דרך קלה לזכור: <strong>אקטו</strong> = בחוץ (עור ועצבים), <strong>אנדו</strong> = בפנים (צינור העיכול), <strong>מזו</strong> = באמצע (מה שמחזיק ומזיז את הגוף).</p>
+<h3>השליה, חבל הטבור ומי השפיר</h3>
+<ul>
+<li><strong>השליה</strong> משמשת לעובר כריאות, כליות ומערכת עיכול עד הלידה: היא מעבירה חמצן ומזון, מפנה פסולת ו-CO₂, מייצרת הורמונים ומעבירה נוגדנים מהאם. בסוף ההריון היא שוקלת כ-500 גרם וקוטרה כ-22 ס"מ (<a href="https://my.clevelandclinic.org/health/body/22337-placenta" target="_blank" rel="noopener">Cleveland Clinic</a>).</li>
+<li>השליה מקבלת את רוב האחריות על הזנת העובר בהדרגה, ומסיימת להתפתח בסביבות שבועות 14–16. בסוף השליש הראשון היא גם מקבלת את ייצור ההורמונים מהשחלה.</li>
+<li><strong>חבל הטבור</strong> מחבר בין העובר לשליה, ויש בו שלושה כלי דם: <strong>וריד אחד</strong> שמביא לעובר דם עשיר בחמצן ומזון, ו<strong>שני עורקים</strong> שמחזירים לשליה דם עם פסולת. זה הפוך מהמצב אצל מבוגרים, שבו עורקים מובילים דם עשיר בחמצן (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li><strong>מי השפיר</strong> ממלאים את שק השפיר (אמניון) סביב העובר. הם מגנים מפני מכות וזיהומים, מונעים לחץ על חבל הטבור, מאפשרים תנועה, ומשמשים לעובר "שטח אימונים": הוא בולע אותם ומתרגל תנועות נשימה, מה שחשוב להתפתחות הריאות ומערכת העיכול (<a href="https://my.clevelandclinic.org/health/body/23310-amniotic-fluid" target="_blank" rel="noopener">Cleveland Clinic</a>). מסביבות שבוע 10 שתן העובר הופך למקור חשוב של מי השפיר.</li>
+</ul>
+<h3>אורגנוגנזה: היווצרות האיברים</h3>
+<p>השבועות כאן נספרים מהווסת האחרונה (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>, <a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>, <a href="https://my.clevelandclinic.org/health/articles/7247-fetal-development-stages-of-growth" target="_blank" rel="noopener">Cleveland Clinic</a>):</p>
+<ol>
+<li><strong>שבועות 5–6, הצינור העצבי:</strong> קפל באקטודרם נסגר לצינור. החלק הקדמי שלו יהפוך למוח, והשאר לחוט השדרה. כשהצינור לא נסגר עד הסוף נגרמים מומים כמו שדרה שסועה (spina bifida) ואננצפליה. זה קורה לעתים קרובות עוד לפני שהאישה יודעת שהיא בהריון (<a href="https://www.cdc.gov/folic-acid/about/index.html" target="_blank" rel="noopener">CDC</a>).</li>
+<li><strong>שבועות 5–7, הלב:</strong> צינור הלב מתחיל לפעום כ-3 שבועות אחרי ההפריה, כלומר סביב שבוע 5–6 להריון. בשבועות 6–7 אפשר לראות את הדופק באולטרסאונד וגינלי.</li>
+<li><strong>שבועות 6–8, הגפיים:</strong> מופיעים ניצני ידיים ורגליים. בהתחלה כפות הידיים נראות כמו משוטים. האצבעות נפרדות כי התאים שביניהן מתים במכוון, בתהליך שנקרא אפופטוזיס.</li>
+<li><strong>שבועות 8–10, שאר האיברים:</strong> נוצרים ריאות, כבד, כליות, עיניים ואוזניים. המעיים מתפתחים מהר כל כך שהם יוצאים זמנית לתוך חבל הטבור. בסוף התקופה כל האיברים העיקריים קיימים בצורה ראשונית, ומכאן הם רק גדלים ומבשילים.</li>
+</ol>
+<h3>מעובר מוקדם (embryo) לעובר (fetus)</h3>
+<p>בסוף שבוע 10 להריון (8 שבועות אחרי ההפריה) מסתיימת <strong>תקופת העובר המוקדם</strong>, ומתחילה <strong>תקופת העובר</strong> (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>). בשלב הזה העובר ארוך כ-3 ס"מ ושוקל כ-8 גרם. הראש שלו גדול כמעט כמו שאר הגוף (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>). השינוי בשם מסמן מעבר משלב של <strong>יצירת</strong> איברים לשלב של <strong>גדילה והבשלה</strong>.</p>
+<h3>למה זו התקופה הרגישה ביותר למזיקים (טרטוגנים)</h3>
+<p><strong>טרטוגן</strong> הוא חומר או גורם שעלול לגרום למומים מולדים, למשל אלכוהול, תרופות מסוימות, קרינה וזיהומים מסוימים.</p>
+<ul>
+<li><strong>שבועיים ראשונים אחרי ההפריה, "הכול או כלום":</strong> התאים עדיין לא התמחו. נזק חמור גורם לאובדן ההריון, ונזק קל מתוקן על ידי תאים אחרים.</li>
+<li><strong>שבועות 3–8 אחרי ההפריה (5–10 להריון), הסיכון הגבוה ביותר:</strong> האיברים נוצרים עכשיו. לכן חשיפה למזיק יכולה לשבש את מבנה האיבר עצמו. האיבר שייפגע תלוי במה שנוצר באותו רגע (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>).</li>
+<li><strong>אחרי שבוע 10 להריון:</strong> הסיכון למומים מבניים גדולים קטן, אבל מזיקים עדיין יכולים לפגוע בגדילה ובתפקוד. המוח ממשיך להתפתח לאורך כל ההריון, ולכן אלכוהול מזיק בכל שלב.</li>
+<li><strong>המסר המעשי:</strong> חלק מהתקופה הרגישה עובר לפני שהאישה יודעת שהיא בהריון. לכן ממליצים לנשים שעשויות להיכנס להריון להתחיל חומצה פולית ולהימנע מאלכוהול עוד לפני ההריון.</li>
+</ul>
+</section>
+<section id="s3" class="card">
+<h2><span class="num">3</span>השליש השני (שבועות 14–27)</h2>
+<p>השליש השני הוא תקופה של גדילה מהירה ושל "הפעלת מערכות". העובר גדל מכ-9 ס"מ לכ-35 ס"מ (מהראש עד העקב), מתחיל לשמוע, והאם מרגישה את התנועות שלו. בסוף השליש עובר שנולד מוקדם כבר עשוי לשרוד עם טיפול נמרץ.</p>
+<h3>גדילה ושינויים חיצוניים</h3>
+<ul>
+<li><strong>פרופורציות:</strong> הגוף מתחיל "להדביק" את הראש. העור דק וכמעט שקוף בשבועות 15–18, ושכבת השומן מתחילה להצטבר רק בשבועות 23–25 (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>).</li>
+<li><strong>לאנוגו:</strong> שיער עדין ורך מופיע בשבועות 15–18 ומכסה את כל הגוף עד שבוע 22. עד הלידה הוא נשר כמעט כולו (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>). נראה שהוא עוזר להחזיק את הוורניקס על העור.</li>
+<li><strong>ורניקס (vernix caseosa):</strong> ציפוי לבן ושומני שמפרישות בלוטות החלב בעור, החל משבועות 16–20 בערך (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax</a>). הוא מגן על העור מפני השהייה הממושכת במי השפיר, בדומה לעור האצבעות שלנו שמתקמט באמבטיה. תינוקות רבים נולדים כששאריות שלו עדיין על עורם.</li>
+<li><strong>צואת ראשונה (מקוניום):</strong> מתחילה להצטבר במעיים. העובר בולע מי שפיר ומתרגל עיכול, אבל בדרך כלל המקוניום מופרש רק אחרי הלידה.</li>
+</ul>
+<h3>תנועות שהאם מרגישה</h3>
+<p>העובר זז כבר בשליש הראשון, אבל הוא קטן מדי כדי שירגישו אותו. את התנועות הראשונות שהאם מרגישה מכנים <strong>quickening</strong>, והן מופיעות בדרך כלל בשבועות 16–21 (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax</a>, <a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>). בהריון ראשון הן מורגשות לרוב מאוחר יותר, ומתוארות לעתים כ"פרפורים" או בועות בבטן.</p>
+<h3>מערכת העצבים והחושים</h3>
+<ul>
+<li><strong>שמיעה:</strong> במחקר שבדק תגובות של עוברים לצלילים, התגובה הראשונה נצפתה בשבוע 19, לצליל נמוך. בשבוע 27 הגיבו 96% מהעוברים לצלילים נמוכים, ולצלילים גבוהים כולם הגיבו רק בשבועות 33–35 (<a href="https://pubmed.ncbi.nlm.nih.gov/7979483/" target="_blank" rel="noopener">Hepper &amp; Shahidullah, 1994</a>). כלומר, השמיעה מתפתחת מהצלילים הנמוכים לגבוהים. הצליל הבולט ברחם הוא קול האם, שמגיע גם דרך גופה.</li>
+<li><strong>עיניים:</strong> העפעפיים סגורים משבוע 10 בערך, ובשבוע 26 העיניים מפותחות במלואן. בשבועות 27–30 העובר כבר פותח וסוגר אותן (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>).</li>
+<li><strong>מערכת העצבים:</strong> בשליש השני מתחילה <strong>מיאלינציה</strong>, כלומר עטיפת העצבים בשכבת שומן מבודדת שמזריזה את העברת האותות. התהליך מסתיים רק בגיל ההתבגרות (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li><strong>עוד:</strong> בשבוע 26 מתחילות להיווצר טביעות האצבע, והעובר עשוי להיבהל מרעש חזק. בשבועות 23–25 מח העצם מתחיל לייצר תאי דם (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>).</li>
+</ul>
+<h3>חיוניות (viability): מתי עובר יכול לשרוד מחוץ לרחם</h3>
+<p><strong>חיוניות</strong> היא השלב שבו יש לעובר סיכוי ממשי לשרוד אם ייולד מוקדם. זו אינה נקודה חדה אלא טווח.</p>
+<ul>
+<li>ארגוני המיילדות בארה"ב (ACOG ו-SMFM) מגדירים לידה בשבועות 20 עד 25+6 כ<strong>לידה בסף החיוניות</strong> (periviable), שבה הסיכויים לשרוד והסיכון לנכות והסיבוכים משתנים מאוד (<a href="https://assets.noviams.com/novi-file-uploads/smfm/Publications_and_Guidelines/Joint_Documents/ACOG_SMFM_OCC_6__Periviable_birth.pdf" target="_blank" rel="noopener">ACOG/SMFM Obstetric Care Consensus: Periviable Birth</a>).</li>
+<li>במחלקות טיפול נמרץ ליילודים מתקדמות, שרידה אפשרית בדרך כלל מסביבות שבוע 23–24 (<a href="https://my.clevelandclinic.org/health/articles/7247-fetal-development-stages-of-growth" target="_blank" rel="noopener">Cleveland Clinic</a>). ככל שהעובר נולד מאוחר יותר, הסיכויים שלו עולים משמעותית משבוע לשבוע.</li>
+<li><strong>למה דווקא שם?</strong> הגבול נקבע בעיקר על ידי הריאות. רק בשלב הזה נוצרים שקיקי האוויר הראשוניים וכלי דם קרובים מספיק להם, כך שאפשר להעביר חמצן לדם.</li>
+<li>הסיכוי לשרוד תלוי גם במשקל, במין, במספר העוברים, ובמתן סטרואידים לאם לפני הלידה כדי לזרז את הבשלת הריאות.</li>
+</ul>
+</section>
+<section id="s4" class="card">
+<h2><span class="num">4</span>השליש השלישי (שבועות 28–40)</h2>
+<p>בשליש השלישי העובר מתכונן לחיים מחוץ לרחם. הריאות מבשילות, המוח גדל במהירות, והמשקל עולה מכ-1 ק"ג לכ-3.5 ק"ג בממוצע. אין כמעט איברים חדשים: מה שמשתנה הוא הגודל, הבשלות והמוכנות ללידה.</p>
+<h3>הבשלת הריאות: סורפקטנט</h3>
+<ul>
+<li>ברחם הריאות מלאות נוזל ולא אוויר, והחמצן מגיע מהשליה. ברגע הלידה הן צריכות להתמלא באוויר תוך שניות.</li>
+<li><strong>סורפקטנט</strong> הוא חומר שמצפה מבפנים את שקיקי האוויר (המכתיות). הוא מקטין את מתח הפנים של הנוזל, וכך מונע מהשקיקים לקרוס בכל נשיפה (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li>הייצור מתחיל בסביבות שבוע 26 וגדל בשבועות 27–30 (<a href="https://my.clevelandclinic.org/health/articles/7247-fetal-development-stages-of-growth" target="_blank" rel="noopener">Cleveland Clinic</a>, <a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>). בשבוע 32 הריאות עדיין עלולות להיות לא בשלות, והן ממשיכות להבשיל עד סוף ההריון.</li>
+<li>תינוק שנולד עם מחסור בסורפקטנט עלול לסבול מ<strong>תסמונת מצוקה נשימתית</strong> (RDS). לכן נותנים לאם סטרואידים כשצפויה לידה מוקדמת, כדי לזרז את הבשלת הריאות (<a href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth" target="_blank" rel="noopener">WHO</a>).</li>
+</ul>
+<h3>צבירת שומן והתפתחות המוח</h3>
+<ul>
+<li><strong>שומן:</strong> משבוע 31 בערך נצברת שכבת שומן מתחת לעור, והעור מפסיק להיות מקומט. השומן חיוני לשמירת חום הגוף אחרי הלידה, ומשמש מאגר אנרגיה לימים הראשונים (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li><strong>מינרלים:</strong> בשבועות 31–34 העצמות כבר מעוצבות אבל רכות, והעובר אוגר ברזל, סידן וזרחן (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>). זו אחת הסיבות שהאם צריכה ברזל וסידן במהלך ההריון.</li>
+<li><strong>מוח:</strong> בשבועות 27–30 המוח גדל במהירות (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>). קליפת המוח, שהייתה חלקה, מתקמטת ומקבלת את הקפלים האופייניים שלה. תהליך המיאלינציה נמשך, והעובר מפתח מחזורי שינה וערות.</li>
+<li><strong>לקראת הסוף:</strong> בשבועות 35–37 העובר שוקל כ-2.5 ק"ג, והאיברים והשרירים מפותחים במלואם. בלידה הוא שוקל בדרך כלל 2.5–4 ק"ג, ואורכו כ-51 ס"מ (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+</ul>
+<h3>תנוחת העובר לקראת הלידה</h3>
+<ul>
+<li>כשהמקום ברחם מצטמצם, העובר נוטה לשכב ב"תנוחת עובר": זרועות משולבות וברכיים מקופלות.</li>
+<li>רוב העוברים מסתובבים לתנוחת <strong>ראש</strong> (ראש למטה) עד שבועות 36–37. ב-3%–4% מההריונות העובר נשאר ב<strong>מצג עכוז</strong> (ישבן או רגליים למטה) בזמן הלידה (<a href="https://www.wyevalley.nhs.uk/visitors-and-patients/county-hospital-acute/a-z-departments/maternity/complications-in-pregnancy/a-breech-baby.aspx" target="_blank" rel="noopener">Wye Valley NHS Trust</a>).</li>
+<li>במקרים מסוימים רופאים מנסים לסובב עובר עכוז בעזרת לחץ עדין על הבטן (היפוך חיצוני, ECV). הפעולה מצליחה בכמחצית מהמקרים.</li>
+<li>בסביבות שבוע 37 הראש עשוי "לרדת" עמוק יותר לתוך אגן האם (<a href="https://my.clevelandclinic.org/health/articles/7247-fetal-development-stages-of-growth" target="_blank" rel="noopener">Cleveland Clinic</a>).</li>
+</ul>
+<h3>לידה מוקדמת מול לידה במועד</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>הגדרה</th><th>שבועות הריון</th></tr></thead>
+<tbody>
+<tr><td>פגות קיצונית (extremely preterm)</td><td>עד 27+6</td></tr>
+<tr><td>פגות משמעותית (very preterm)</td><td>28 עד 31+6</td></tr>
+<tr><td>פגות בינונית עד מאוחרת (moderate to late preterm)</td><td>32 עד 36+6</td></tr>
+<tr><td>במועד מוקדם (early term)</td><td>37 עד 38+6</td></tr>
+<tr><td>במועד מלא (full term)</td><td>39 עד 40+6</td></tr>
+<tr><td>במועד מאוחר (late term)</td><td>41 עד 41+6</td></tr>
+<tr><td>לאחר המועד (post term)</td><td>42 ואילך</td></tr>
+</tbody></table></div>
+<p>מקורות: הגדרות הפגות מ-<a href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth" target="_blank" rel="noopener">WHO</a>; הגדרות "במועד" של ACOG, כפי שמובאות ב-<a href="https://my.clevelandclinic.org/health/articles/7247-fetal-development-stages-of-growth" target="_blank" rel="noopener">Cleveland Clinic</a>. הכתיב "36+6" פירושו 36 שבועות ו-6 ימים.</p>
+<p>לפי ארגון הבריאות העולמי, ב-2020 נולדו כ-13.4 מיליון תינוקות פגים, יותר מאחד מכל 10 לידות. סיבוכי פגות הם הגורם המוביל למוות של ילדים מתחת לגיל 5. שלושה רבעים ממקרי המוות האלה ניתנים למניעה באמצעים פשוטים, כמו סטרואידים לאם ו"שיטת הקנגורו", מגע עור בעור עם האם (<a href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth" target="_blank" rel="noopener">WHO</a>).</p>
+</section>
+<section id="s5" class="card">
+<h2><span class="num">5</span>טבלה מסכמת: כל 4 שבועות</h2>
+<p>בתוך 36 שבועות העובר גדל מגודל של זרע פרג (2 מ"מ) לגודל של דלעת (כ-51 ס"מ), ומשקלו גדל ביותר מפי אלף. השבועות נספרים מהווסת האחרונה.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>שבוע</th><th>אורך משוער</th><th>בגודל של...</th><th>משקל משוער (בקירוב)</th><th>אבני דרך עיקריות</th></tr></thead>
+<tbody>
+<tr><td>4</td><td>כ-2 מ"מ</td><td>זרע פרג</td><td>פחות מגרם</td><td>השרשה ברחם; מתחיל ייצור hCG</td></tr>
+<tr><td>8</td><td>כ-1.6 ס"מ</td><td>פטל</td><td>כ-1 גרם</td><td>הלב פועם; ניצני ידיים ורגליים; הריאות מתחילות להיווצר</td></tr>
+<tr><td>12</td><td>כ-5.4 ס"מ (ראש–עכוז)</td><td>שזיף</td><td>כ-15 גרם</td><td>כל האיברים קיימים; ציפורניים; איברי מין מתבדלים</td></tr>
+<tr><td>16</td><td>כ-11.6 ס"מ (ראש–עכוז)</td><td>אבוקדו</td><td>כ-110 גרם</td><td>תנועות ידיים ורגליים; אגרופים; הבעות פנים אקראיות</td></tr>
+<tr><td>20</td><td>כ-25.6 ס"מ (ראש–עקב)</td><td>בננה</td><td>כ-350 גרם</td><td>האם מרגישה תנועות; ורניקס; מציצת אצבע; סקירת מערכות</td></tr>
+<tr><td>24</td><td>כ-30 ס"מ</td><td>קלח תירס</td><td>כ-600 גרם</td><td>סף החיוניות; מתחילה צבירת שומן; מח עצם מייצר דם</td></tr>
+<tr><td>28</td><td>כ-37.6 ס"מ</td><td>חציל</td><td>כ-1 ק"ג</td><td>פותח וסוגר עיניים; ייצור סורפקטנט; דופק כ-140 בדקה</td></tr>
+<tr><td>32</td><td>כ-42.4 ס"מ</td><td>צרור סלרי</td><td>כ-1.8 ק"ג</td><td>עלייה מהירה במשקל; עצמות רכות; רוב העוברים במצג ראש</td></tr>
+<tr><td>36</td><td>כ-47.4 ס"מ</td><td>חסה</td><td>כ-2.6 ק"ג</td><td>הריאות כנראה בשלות; מסוגל לינוק ולעכל חלב</td></tr>
+<tr><td>40</td><td>כ-51 ס"מ</td><td>דלעת</td><td>כ-3.4 ק"ג (2.5–4)</td><td>מוכן ללידה; רוב הלאנוגו נשר</td></tr>
+</tbody></table></div>
+<p><strong>איך לקרוא את הטבלה:</strong></p>
+<ul>
+<li><strong>האורך:</strong> עד שבוע 20 מודדים מהראש עד העכוז, כי הרגליים מקופלות. משבוע 20 מודדים מהראש עד העקב, ולכן המספר "קופץ" בין שבוע 16 לשבוע 20.</li>
+<li><strong>המשקל:</strong> אלה ערכים ממוצעים משוערים, ועוברים בריאים שונים זה מזה במידה ניכרת. המספרים מעוגלים מהמקורות שלמטה, וחלקם מומרים מאונקיות וליברות. משקלי שבועות 8 ו-12 הם הערכה גסה בלבד.</li>
+</ul>
+<p>מקורות: אורך והשוואות מדפי השבועות של <a href="https://www.nhs.uk/pregnancy/week-by-week/" target="_blank" rel="noopener">NHS</a> (שבועות <a href="https://www.nhs.uk/pregnancy/week-by-week/1-to-12/8-weeks/" target="_blank" rel="noopener">8</a>, <a href="https://www.nhs.uk/pregnancy/week-by-week/1-to-12/12-weeks/" target="_blank" rel="noopener">12</a>, <a href="https://www.nhs.uk/pregnancy/week-by-week/13-to-27/16-weeks/" target="_blank" rel="noopener">16</a>, <a href="https://www.nhs.uk/pregnancy/week-by-week/13-to-27/20-weeks/" target="_blank" rel="noopener">20</a>, <a href="https://www.nhs.uk/pregnancy/week-by-week/13-to-27/24-weeks/" target="_blank" rel="noopener">24</a>, <a href="https://www.nhs.uk/pregnancy/week-by-week/28-to-40-plus/28-weeks/" target="_blank" rel="noopener">28</a>, <a href="https://www.nhs.uk/pregnancy/week-by-week/28-to-40-plus/32-weeks/" target="_blank" rel="noopener">32</a>, <a href="https://www.nhs.uk/pregnancy/week-by-week/28-to-40-plus/36-weeks/" target="_blank" rel="noopener">36</a>, <a href="https://www.nhs.uk/pregnancy/week-by-week/28-to-40-plus/40-weeks/" target="_blank" rel="noopener">40</a>); שבוע 4 ומשקלים חודשיים מ-<a href="https://my.clevelandclinic.org/health/articles/7247-fetal-development-stages-of-growth" target="_blank" rel="noopener">Cleveland Clinic</a>; משקל בשבוע 20 ממחקר עקומות גדילה (<a href="https://www.scielo.br/j/csp/a/M8B7pQSHvjzfCMJGLNNSJtB/abstract/?lang=en" target="_blank" rel="noopener">Cadernos de Saúde Pública</a>); משקל בלידה מ-<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax</a>; אבני דרך מ-<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>.</p>
+</section>
+<section id="s6" class="card">
+<h2><span class="num">6</span>הקשר בין האם לעובר</h2>
+<p>כל מה שהעובר מקבל מהאם עובר דרך השליה. השליה מגנה מפני חלק מהמזיקים, אבל היא <strong>אינה מסנן מושלם</strong>: אלכוהול, ניקוטין, תרופות רבות וחלק מהנגיפים עוברים דרכה.</p>
+<h3>איך עוברים חומרים דרך השליה</h3>
+<p>הדם של האם והדם של העובר <strong>לא מתערבבים</strong>. בשליה הם זורמים קרוב זה לזה, מופרדים בשכבת תאים דקה, והחומרים עוברים בשלוש דרכים (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>):</p>
+<div class="table-wrap"><table>
+<thead><tr><th>דרך מעבר</th><th>מה עובר כך</th><th>הסבר</th></tr></thead>
+<tbody>
+<tr><td>דיפוזיה פשוטה</td><td>חמצן, CO₂, חומרים מסיסים בשומן (כולל אלכוהול וניקוטין)</td><td>מריכוז גבוה לנמוך, בלי אנרגיה</td></tr>
+<tr><td>דיפוזיה מוקלת</td><td>גלוקוז</td><td>בעזרת חלבוני נשא בקרום</td></tr>
+<tr><td>העברה פעילה</td><td>חומצות אמינו, ברזל</td><td>גם נגד מפל הריכוז, בהשקעת אנרגיה</td></tr>
+</tbody></table></div>
+<p>בכיוון ההפוך זורמים CO₂ ופסולת: השליה מעבירה אותם לדם של האם, והריאות והכליות שלה מפנות אותם (<a href="https://my.clevelandclinic.org/health/body/22337-placenta" target="_blank" rel="noopener">Cleveland Clinic</a>).</p>
+<h3>מה עובר דרך השליה ומה לא</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>חומר</th><th>עובר?</th><th>מה חשוב לדעת</th></tr></thead>
+<tbody>
+<tr><td><strong>נוגדנים (IgG)</strong></td><td>כן</td><td>מעניקים לתינוק הגנה לכמה חודשים אחרי הלידה (<a href="https://my.clevelandclinic.org/health/body/22337-placenta" target="_blank" rel="noopener">Cleveland Clinic</a>). זו הסיבה שמחסנים נשים בהריון נגד שעלת ו-RSV: ההגנה עוברת לתינוק דרך השליה (<a href="https://www.nhs.uk/pregnancy/week-by-week/28-to-40-plus/28-weeks/" target="_blank" rel="noopener">NHS</a>)</td></tr>
+<tr><td><strong>אלכוהול</strong></td><td>כן</td><td>עובר דרך חבל הטבור. <strong>אין כמות, שלב או סוג משקה בטוחים</strong>, גם לא יין או בירה. עלול לגרום לתסמונת האלכוהול העוברית (FASD), עם קשיי למידה והתנהגות לכל החיים (<a href="https://www.cdc.gov/fasd/about/index.html" target="_blank" rel="noopener">CDC</a>)</td></tr>
+<tr><td><strong>ניקוטין ועישון</strong></td><td>כן</td><td>מעלה סיכון ללידה מוקדמת, למשקל לידה נמוך ולשסע שפה או חך. ניקוטין פוגע במוח ובריאות של העובר. גם סיגריות אלקטרוניות אינן בטוחות (<a href="https://www.cdc.gov/maternal-infant-health/pregnancy-substance-abuse/index.html" target="_blank" rel="noopener">CDC</a>)</td></tr>
+<tr><td><strong>תרופות</strong></td><td>רבות כן</td><td>חלקן בטוחות וחלקן מזיקות. לכן מתייעצים עם רופא לפני שמתחילים תרופה, או לפני שמפסיקים תרופה קבועה. הפסקה פתאומית עלולה להזיק גם היא</td></tr>
+<tr><td><strong>וירוסים מסוימים</strong></td><td>כן</td><td>למשל CMV: כ-1 מכל 200 תינוקות נולד עם הדבקה מולדת, והפגיעה השכיחה ביותר היא בשמיעה (<a href="https://www.cdc.gov/cytomegalovirus/congenital-infection/index.html" target="_blank" rel="noopener">CDC</a>). גם אדמת וזיקה עוברים לעובר</td></tr>
+<tr><td><strong>תאי דם שלמים</strong></td><td>לא, כמעט</td><td>הדם של האם והעובר מופרדים. לכן לאם ולעובר יכולים להיות סוגי דם שונים</td></tr>
+<tr><td><strong>מולקולות גדולות</strong> (למשל רוב החלבונים וההורמונים הגדולים)</td><td>בדרך כלל לא</td><td>עוברים רק אם יש להם מנגנון העברה מיוחד, כמו במקרה של נוגדני IgG</td></tr>
+</tbody></table></div>
+<h3>תזונה ואורח חיים</h3>
+<ul>
+<li><strong>חומצה פולית:</strong> ממליצים על 400 מיקרוגרם ביום לכל אישה שעשויה להיכנס להריון, רצוי לפחות חודש לפני ההריון. היא מפחיתה את הסיכון למומים בצינור העצבי, שנוצרים בשבועות הראשונים, לעתים קרובות לפני שיודעים על ההריון (<a href="https://www.cdc.gov/folic-acid/about/index.html" target="_blank" rel="noopener">CDC</a>).</li>
+<li><strong>ברזל:</strong> ארגון הבריאות העולמי ממליץ על תוסף יומי של 30–60 מ"ג ברזל יחד עם 400 מיקרוגרם חומצה פולית. המטרה היא למנוע אנמיה אצל האם, לידה מוקדמת ומשקל לידה נמוך (<a href="https://www.who.int/docs/default-source/micronutrients/summary-guideline-daily-ifa-supp-pregnant-women.pdf" target="_blank" rel="noopener">WHO</a>). נפח הדם של האם גדל מאוד בהריון, והעובר אוגר ברזל לקראת החודשים הראשונים שלו.</li>
+<li><strong>עוד על אורח חיים:</strong> הימנעות מאלכוהול ומעישון היא הצעד המשמעותי ביותר שהאם יכולה לעשות. שטיפת ידיים אחרי מגע עם רוק או שתן של ילדים קטנים מפחיתה את הסיכון ל-CMV (<a href="https://www.cdc.gov/cytomegalovirus/congenital-infection/index.html" target="_blank" rel="noopener">CDC</a>). הפסקת אלכוהול מועילה בכל שלב, כי המוח ממשיך להתפתח לאורך כל ההריון (<a href="https://www.cdc.gov/fasd/about/index.html" target="_blank" rel="noopener">CDC</a>).</li>
+</ul>
+</section>
+<section id="s7" class="card">
+<h2><span class="num">7</span>מעקב רפואי: הבדיקות העיקריות</h2>
+<p>רוב הבדיקות בהריון הן <strong>בדיקות סקר</strong>: הן מעריכות סיכון ולא נותנות אבחנה ודאית. כשתוצאת סקר מעלה חשד, מציעים <strong>בדיקה אבחנתית</strong>, כמו דיקור מי שפיר. בישראל חלק מהבדיקות כלולות בסל הבריאות וחלקן לא, וכל בדיקה נעשית רק בהסכמת האישה (<a href="https://www.kolzchut.org.il/he/בדיקות_במהלך_ההריון" target="_blank" rel="noopener">כל זכות</a>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>שבוע (בערך)</th><th>בדיקה</th><th>סוג</th><th>מה היא בודקת</th></tr></thead>
+<tbody>
+<tr><td>עד 12</td><td>בדיקות דם ושתן ראשונות</td><td>מעקב</td><td>ספירת דם (אנמיה), סוג דם ו-Rh, חסינות למחלות זיהומיות, תרבית שתן</td></tr>
+<tr><td>6–7</td><td>אולטרסאונד "הריון צעיר"</td><td>מעקב</td><td>שההריון בתוך הרחם, דופק לב, מספר עוברים, גיל ההריון</td></tr>
+<tr><td>לפני ההריון או בתחילתו</td><td>סקר נשאות גנטי</td><td>סקר</td><td>האם ההורים נשאים של מחלות גנטיות מסוימות</td></tr>
+<tr><td>11+0 עד 13+6</td><td><strong>שקיפות עורפית</strong> + סקר ביוכימי ראשון</td><td>סקר</td><td>מודדת את עובי הנוזל בעורף העובר. בשילוב עם בדיקת דם (Free βhCG, PAPP-A) מזהה כ-90% מהעוברים עם תסמונת דאון, לעומת כ-70% ללא בדיקת הדם (<a href="https://www.maccabi4u.co.il/healthguide/labs/nuchaltranslucencyultrasoundscan/" target="_blank" rel="noopener">מכבי</a>)</td></tr>
+<tr><td>משבוע 10 בערך</td><td>NIPT (בדיקת DNA עוברי בדם האם)</td><td>סקר</td><td>סיכון לתסמונות כרומוזומליות, מקטעי DNA של השליה שנמצאים בדם האם</td></tr>
+<tr><td>11–14</td><td>בדיקת סיסי שליה (CVS)</td><td>אבחנה</td><td>נטילת דגימה מהשליה לבדיקה גנטית מלאה</td></tr>
+<tr><td>14–16</td><td>סקירת מערכות מוקדמת</td><td>סקר</td><td>מבנה האיברים, באולטרסאונד וגינלי. לא כלולה בסל הבריאות</td></tr>
+<tr><td>16–19</td><td>סקר ביוכימי שני ("חלבון עוברי", תבחין משולש)</td><td>סקר</td><td>סיכון לתסמונת דאון ולמומים בצינור העצבי</td></tr>
+<tr><td>16–20</td><td>דיקור מי שפיר</td><td>אבחנה</td><td>נטילת מי שפיר במחט דקה, ובדיקת תאי העובר שצפים בהם</td></tr>
+<tr><td>21–24</td><td>סקירת מערכות מאוחרת</td><td>סקר</td><td>מבנה מפורט של המוח, הלב, העמוד השדרה, הגפיים והאיברים, באולטרסאונד בטני</td></tr>
+<tr><td>24–28</td><td>העמסת סוכר</td><td>סקר</td><td>סוכרת הריון: שותים משקה מתוק ומודדים סוכר בדם</td></tr>
+<tr><td>שליש שלישי</td><td>אולטרסאונד מעקב גדילה</td><td>מעקב</td><td>משקל משוער, כמות מי שפיר, מיקום השליה ומצג העובר</td></tr>
+<tr><td>סוף ההריון</td><td>תרבית GBS</td><td>סקר</td><td>נשאות של חיידק סטרפטוקוק מקבוצה B, שעלול לעבור לתינוק בלידה</td></tr>
+<tr><td>אחרי תאריך הלידה</td><td>מעקב עובר (ניטור)</td><td>מעקב</td><td>דופק העובר, תנועות וכמות מי שפיר</td></tr>
+</tbody></table></div>
+<p>מקורות: שבועות הבדיקות מהמדריך של <a href="https://www.maccabi4u.co.il/maccabi_circles/pregnancy-and-birth/pregnancy_birth/tests/" target="_blank" rel="noopener">מכבי שירותי בריאות</a>. השבועות של NIPT, CVS, העמסת הסוכר ו-GBS לא מופיעים שם, והם מבוססים על הנוהג המקובל. מומלץ לאמת את הפרטים המעודכנים ואת הכיסוי הביטוחי מול משרד הבריאות וקופת החולים.</p>
+<p><strong>סקר מול אבחנה, בקצרה:</strong> בדיקת סקר היא בטוחה לעובר, אבל נותנת רק הערכת סיכון. בדיקה אבחנתית (סיסי שליה או מי שפיר) נותנת תשובה כמעט ודאית, אבל יש בה סיכון קטן להפלה, ולכן עושים אותה רק כשיש סיבה.</p>
+</section>
+<section id="s8" class="card">
+<h2><span class="num">8</span>עובדות מפתיעות ומיתוסים</h2>
+<h3>10 עובדות מפתיעות</h3>
+<ol>
+<li><strong>הלב פועם לפני שיודעים על ההריון.</strong> צינור הלב מתחיל לפעום כ-3 שבועות אחרי ההפריה, כשהעובר קטן מגרגר אורז (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li><strong>רוב הביציות המופרות לא משתרשות.</strong> לפי ההערכות, 50%–75% מהבלסטוציסטים נכשלים בהשרשה, לרוב בלי שמישהו יודע (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li><strong>המעיים גדלים בהתחלה מחוץ לבטן.</strong> בשלב מוקדם הם גדלים מהר מדי, יוצאים זמנית לתוך חבל הטבור וחוזרים פנימה מאוחר יותר (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>).</li>
+<li><strong>האצבעות נוצרות ממוות תאים.</strong> בהתחלה היד נראית כמו כף אחת. התאים שבין האצבעות מתים במכוון, בתהליך שנקרא אפופטוזיס.</li>
+<li><strong>העובר שותה את מי השפיר ומשתין לתוכם.</strong> השתן שלו הוא מקור מרכזי של מי השפיר, והבליעה מתרגלת את מערכת העיכול (<a href="https://my.clevelandclinic.org/health/body/23310-amniotic-fluid" target="_blank" rel="noopener">Cleveland Clinic</a>).</li>
+<li><strong>העובר שומע את קול אמו.</strong> תגובות לצלילים נמדדו כבר משבוע 19 (<a href="https://pubmed.ncbi.nlm.nih.gov/7979483/" target="_blank" rel="noopener">Hepper &amp; Shahidullah, 1994</a>).</li>
+<li><strong>כל הגוף מכוסה בשיער דק.</strong> בשבוע 22 הלאנוגו מכסה את כל העור, ועד הלידה רובו נשר (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>).</li>
+<li><strong>לעובר יש "קרם מגן" טבעי.</strong> הוורניקס, ציפוי לבן ושומני, מגן על העור מפני השהייה הממושכת במים (<a href="https://www.nhs.uk/pregnancy/week-by-week/13-to-27/20-weeks/" target="_blank" rel="noopener">NHS</a>).</li>
+<li><strong>הלב של העובר מהיר כמעט פי 2 משל אמו.</strong> בשבוע 28 הוא פועם כ-140 פעמים בדקה, לעומת 80–85 אצל האם (<a href="https://www.nhs.uk/pregnancy/week-by-week/28-to-40-plus/28-weeks/" target="_blank" rel="noopener">NHS</a>).</li>
+<li><strong>לשליה יש אותם גנים כמו לעובר.</strong> היא נוצרת מאותה ביצית מופרית, ולכן היא שייכת לעובר ולא לאם (<a href="https://my.clevelandclinic.org/health/body/22337-placenta" target="_blank" rel="noopener">Cleveland Clinic</a>).</li>
+</ol>
+<h3>מיתוסים נפוצים</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>מיתוס</th><th>מה נכון</th></tr></thead>
+<tbody>
+<tr><td>"בהריון צריך לאכול בשביל שניים"</td><td>לא צריך, גם לא בהריון תאומים. חשובה תזונה מגוונת, לא כמות כפולה (<a href="https://www.nhs.uk/pregnancy/keeping-well/have-a-healthy-diet/" target="_blank" rel="noopener">NHS</a>)</td></tr>
+<tr><td>"כוס יין קטנה לא מזיקה"</td><td>אין כמות אלכוהול שידוע שהיא בטוחה, באף שלב של ההריון ובאף סוג משקה (<a href="https://www.cdc.gov/fasd/about/index.html" target="_blank" rel="noopener">CDC</a>)</td></tr>
+<tr><td>"השליה מסננת את כל מה שמזיק"</td><td>אלכוהול, ניקוטין, תרופות רבות וחלק מהנגיפים עוברים דרכה (<a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax</a>)</td></tr>
+<tr><td>"לפי קצב הלב אפשר לדעת אם זה בן או בת"</td><td>מחקרים מצאו שקצב הלב אינו מנבא את מין העובר (<a href="https://www.cmaj.ca/content/161/12/1525.full" target="_blank" rel="noopener">CMAJ</a>, <a href="https://health.clevelandclinic.org/does-babys-heart-rate-reveal-their-sex/" target="_blank" rel="noopener">Cleveland Clinic</a>). גם צורת הבטן לא מנבאת את המין</td></tr>
+<tr><td>"התינוק ייולד בתאריך הלידה המשוער"</td><td>זו רק הערכה. הריון תקין נמשך 37–42 שבועות (<a href="https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/" target="_blank" rel="noopener">NHS</a>)</td></tr>
+<tr><td>"העובר לא שומע ולא מרגיש כלום עד הלידה"</td><td>הוא מגיב לצלילים משבוע 19 בערך, ועשוי להיבהל מרעש חזק משבוע 26 (<a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus</a>)</td></tr>
+<tr><td>"מומים מולדים קורים רק בגלל מה שהאם עשתה"</td><td>לרוב לא אפשר לדעת מה הסיבה, והרבה מהסיבות הן גנטיות או אקראיות. כדאי להציג את הנושא ברגישות, בלי האשמה</td></tr>
+</tbody></table></div>
+</section>
+<section id="s9" class="card">
+<h2><span class="num">9</span>חומרים לשיעור</h2>
+<h3>מילון מונחים</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>מונח</th><th>הגדרה</th></tr></thead>
+<tbody>
+<tr><td>זיגוטה</td><td>התא הראשון שנוצר מאיחוד ביצית ותא זרע, עם 46 כרומוזומים</td></tr>
+<tr><td>בלסטוציסט</td><td>כדור חלול של כ-100 תאים, השלב שבו מתרחשת ההשרשה</td></tr>
+<tr><td>השרשה</td><td>היקשרות הבלסטוציסט לרירית הרחם וחדירתו לתוכה</td></tr>
+<tr><td>hCG</td><td>הורמון ההריון. מיוצר אחרי ההשרשה, ואותו מזהה בדיקת ההריון</td></tr>
+<tr><td>גסטרולציה</td><td>התהליך שבו נוצרות שלוש שכבות הנבט</td></tr>
+<tr><td>שכבות נבט</td><td>אקטודרם, מזודרם ואנדודרם: שלוש שכבות תאים שמהן מתפתחים כל איברי הגוף</td></tr>
+<tr><td>צינור עצבי</td><td>המבנה העוברי שממנו מתפתחים המוח וחוט השדרה</td></tr>
+<tr><td>אורגנוגנזה</td><td>יצירת האיברים, בעיקר בשבועות 5–10 להריון</td></tr>
+<tr><td>עובר מוקדם (embryo)</td><td>העובר עד סוף שבוע 10 להריון, בשלב יצירת האיברים</td></tr>
+<tr><td>עובר (fetus)</td><td>העובר משבוע 11 ועד הלידה, בשלב הגדילה וההבשלה</td></tr>
+<tr><td>שליה</td><td>איבר זמני שמחבר בין האם לעובר ומאפשר מעבר חמצן, מזון ופסולת</td></tr>
+<tr><td>מי שפיר</td><td>הנוזל שמקיף את העובר, מגן עליו ומאפשר תנועה</td></tr>
+<tr><td>טרטוגן</td><td>גורם שעלול לגרום למומים מולדים, כמו אלכוהול או זיהומים מסוימים</td></tr>
+<tr><td>לאנוגו</td><td>שיער עדין שמכסה את עור העובר בשליש השני</td></tr>
+<tr><td>ורניקס</td><td>ציפוי לבן ושומני שמגן על עור העובר</td></tr>
+<tr><td>Quickening</td><td>התנועות הראשונות שהאם מרגישה, בדרך כלל בשבועות 16–21</td></tr>
+<tr><td>סורפקטנט</td><td>חומר בריאות שמונע משקיקי האוויר לקרוס בנשימה</td></tr>
+<tr><td>חיוניות (viability)</td><td>השלב שבו לעובר יש סיכוי לשרוד מחוץ לרחם, בערך משבוע 23–24</td></tr>
+<tr><td>בדיקת סקר</td><td>בדיקה שמעריכה סיכון ולא נותנת אבחנה ודאית</td></tr>
+</tbody></table></div>
+<h3>10 שאלות לבדיקת הבנה</h3>
+<ol class="quiz">
+<li><details><summary><strong>איפה מתרחשת ההפריה, ומי קובע את המין הכרומוזומלי של העובר?</strong></summary><p><strong>תשובה:</strong> בחלק הרחוק של החצוצרה. תא הזרע קובע את המין, כי הוא נושא X או Y, והביצית נושאת תמיד X.</p></details></li>
+<li><details><summary><strong>אישה נמצאת "בשבוע 8" להריון. מה בערך גיל העובר מההפריה, ולמה?</strong></summary><p><strong>תשובה:</strong> כ-6 שבועות. גיל ההריון נספר מהווסת האחרונה, כשבועיים לפני ההפריה.</p></details></li>
+<li><details><summary><strong>איזו שכבת נבט מוניבה את מערכת העצבים, ואיזו את הלב?</strong></summary><p><strong>תשובה:</strong> מערכת העצבים מתפתחת מהאקטודרם, והלב מהמזודרם.</p></details></li>
+<li><details><summary><strong>מה ההבדל בין הווריד לעורקים שבחבל הטבור, ומה מפתיע בזה?</strong></summary><p><strong>תשובה:</strong> הווריד מביא לעובר דם עשיר בחמצן, והעורקים מוציאים דם עם פסולת. זה הפוך מהמצב אצל מבוגרים.</p></details></li>
+<li><details><summary><strong>למה השליש הראשון רגיש במיוחד לטרטוגנים?</strong></summary><p><strong>תשובה:</strong> כי בשבועות 5–10 נוצרים האיברים, ופגיעה בשלב הזה משבשת את מבנה האיבר עצמו.</p></details></li>
+<li><details><summary><strong>מה תפקיד הסורפקטנט, ומה קורה לפג שאין לו מספיק ממנו?</strong></summary><p><strong>תשובה:</strong> הוא מקטין מתח פנים ומונע משקיקי האוויר לקרוס. פג עם מחסור עלול לסבול מתסמונת מצוקה נשימתית (RDS).</p></details></li>
+<li><details><summary><strong>האם הדם של האם והעובר מתערבב בשליה? הסבירו איך בכל זאת עובר חמצן.</strong></summary><p><strong>תשובה:</strong> לא. הדם של שניהם זורם קרוב זה לזה, והחמצן עובר בדיפוזיה דרך שכבת תאים דקה.</p></details></li>
+<li><details><summary><strong>למה ממליצים להתחיל לקחת חומצה פולית עוד לפני ההריון?</strong></summary><p><strong>תשובה:</strong> כי הצינור העצבי נסגר בשבועות הראשונים, לעתים קרובות לפני שהאישה יודעת שהיא בהריון.</p></details></li>
+<li><details><summary><strong>מה ההבדל בין שקיפות עורפית לבין דיקור מי שפיר?</strong></summary><p><strong>תשובה:</strong> שקיפות עורפית היא בדיקת סקר באולטרסאונד, בטוחה, שמעריכה סיכון. דיקור מי שפיר הוא בדיקה אבחנתית שנותנת תשובה כמעט ודאית, אבל יש בו סיכון קטן להפלה.</p></details></li>
+<li><details><summary><strong>תינוק נולד בשבוע 35. האם זו לידה מוקדמת? ובשבוע 38?</strong></summary><p><strong>תשובה:</strong> בשבוע 35 זו לידה מוקדמת (פגות מאוחרת), כי היא לפני 37 שבועות. בשבוע 38 זו לידה במועד מוקדם (early term).</p></details></li>
+</ol>
+<h3>רעיונות להמחשה ולפעילות בכיתה</h3>
+<ul>
+<li><strong>סרגל הגודל:</strong> מביאים לכיתה (או מציגים בתמונות) פרג, פטל, שזיף, אבוקדו, בננה, קלח תירס וחציל. התלמידים מסדרים אותם לפי שבוע ההריון ומשווים לטבלה בפרק 5.</li>
+<li><strong>ציר זמן על הרצפה:</strong> מדביקים סרט של 4 מטרים (10 ס"מ לכל שבוע). כל קבוצה מקבלת כרטיסים עם אבני דרך, כמו "הלב מתחיל לפעום", וצריכה למקם אותם על הציר. כך רואים כמה הרבה קורה ב-10 הסנטימטרים הראשונים.</li>
+<li><strong>שכבות הנבט בפלסטלינה:</strong> שלושה צבעים לשלוש שכבות. התלמידים מקפלים את האקטודרם לצינור כדי להמחיש את יצירת הצינור העצבי.</li>
+<li><strong>מודל שליה:</strong> שקית ברז עם מים צבועים, בתוך כלי עם מים צלולים, ממחישה איך חומרים עוברים בלי שהנוזלים מתערבבים.</li>
+<li><strong>"נכון או מיתוס":</strong> מקריאים את הטענות מפרק 8, והתלמידים עומדים בצד אחד של הכיתה או בצד השני לפי התשובה שלהם. אחר כך מסבירים מה נכון.</li>
+<li><strong>רגישות:</strong> בכיתה עשויים להיות תלמידים שנולדו פגים, או שבמשפחתם יש אובדן הריון או מום מולד. כדאי להציג את הנושאים האלה בעובדתיות, בלי האשמה, ולאפשר לתלמידים לשתף רק אם הם רוצים.</li>
+</ul>
+</section>
+<section id="sources" class="card">
+<h2>מקורות</h2>
+<p><strong>ספרי לימוד ומאמרים מדעיים</strong></p>
+<ul>
+<li><a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-1-fertilization" target="_blank" rel="noopener">OpenStax, Anatomy and Physiology 2e — 28.1 Fertilization</a></li>
+<li><a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development" target="_blank" rel="noopener">OpenStax, Anatomy and Physiology 2e — 28.2 Embryonic Development</a></li>
+<li><a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-3-fetal-development" target="_blank" rel="noopener">OpenStax, Anatomy and Physiology 2e — 28.3 Fetal Development</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/7979483/" target="_blank" rel="noopener">Hepper &amp; Shahidullah (1994), Development of fetal hearing</a></li>
+<li><a href="https://www.cmaj.ca/content/161/12/1525.full" target="_blank" rel="noopener">CMAJ — Fetal sex determination: the predictive value of 3 common myths</a></li>
+<li><a href="https://www.scielo.br/j/csp/a/M8B7pQSHvjzfCMJGLNNSJtB/abstract/?lang=en" target="_blank" rel="noopener">Cadernos de Saúde Pública — עקומת משקל עוברי לפי גיל הריון</a></li>
+</ul>
+<p><strong>ארגוני בריאות</strong></p>
+<ul>
+<li><a href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth" target="_blank" rel="noopener">WHO — Preterm birth</a></li>
+<li><a href="https://www.who.int/docs/default-source/micronutrients/summary-guideline-daily-ifa-supp-pregnant-women.pdf" target="_blank" rel="noopener">WHO — Daily iron and folic acid supplementation in pregnant women</a></li>
+<li><a href="https://assets.noviams.com/novi-file-uploads/smfm/Publications_and_Guidelines/Joint_Documents/ACOG_SMFM_OCC_6__Periviable_birth.pdf" target="_blank" rel="noopener">ACOG/SMFM — Obstetric Care Consensus: Periviable Birth</a></li>
+<li><a href="https://www.nhs.uk/pregnancy/week-by-week/" target="_blank" rel="noopener">NHS — Pregnancy week by week</a></li>
+<li><a href="https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/" target="_blank" rel="noopener">NHS — Due date calculator</a></li>
+<li><a href="https://www.nhs.uk/pregnancy/keeping-well/have-a-healthy-diet/" target="_blank" rel="noopener">NHS — Have a healthy diet in pregnancy</a></li>
+<li><a href="https://www.wyevalley.nhs.uk/visitors-and-patients/county-hospital-acute/a-z-departments/maternity/complications-in-pregnancy/a-breech-baby.aspx" target="_blank" rel="noopener">Wye Valley NHS Trust — A breech baby</a></li>
+<li><a href="https://www.cdc.gov/folic-acid/about/index.html" target="_blank" rel="noopener">CDC — About Folic Acid</a></li>
+<li><a href="https://www.cdc.gov/fasd/about/index.html" target="_blank" rel="noopener">CDC — About Fetal Alcohol Spectrum Disorders</a></li>
+<li><a href="https://www.cdc.gov/maternal-infant-health/pregnancy-substance-abuse/index.html" target="_blank" rel="noopener">CDC — Substance use during pregnancy</a></li>
+<li><a href="https://www.cdc.gov/cytomegalovirus/congenital-infection/index.html" target="_blank" rel="noopener">CDC — Congenital CMV infection</a></li>
+<li><a href="https://medlineplus.gov/ency/article/002398.htm" target="_blank" rel="noopener">MedlinePlus — Fetal development</a></li>
+<li><a href="https://medlineplus.gov/genetics/gene/sry/" target="_blank" rel="noopener">MedlinePlus Genetics — SRY gene</a></li>
+<li><a href="https://my.clevelandclinic.org/health/articles/7247-fetal-development-stages-of-growth" target="_blank" rel="noopener">Cleveland Clinic — Fetal development: stages of growth</a></li>
+<li><a href="https://my.clevelandclinic.org/health/body/22337-placenta" target="_blank" rel="noopener">Cleveland Clinic — Placenta</a></li>
+<li><a href="https://my.clevelandclinic.org/health/body/23310-amniotic-fluid" target="_blank" rel="noopener">Cleveland Clinic — Amniotic fluid</a></li>
+<li><a href="https://health.clevelandclinic.org/does-babys-heart-rate-reveal-their-sex/" target="_blank" rel="noopener">Cleveland Clinic — Does baby's heart rate reveal their sex?</a></li>
+</ul>
+<p><strong>מקורות ישראליים</strong></p>
+<ul>
+<li><a href="https://www.maccabi4u.co.il/maccabi_circles/pregnancy-and-birth/pregnancy_birth/tests/" target="_blank" rel="noopener">מכבי שירותי בריאות — בדיקות בהריון</a></li>
+<li><a href="https://www.maccabi4u.co.il/healthguide/labs/nuchaltranslucencyultrasoundscan/" target="_blank" rel="noopener">מכבי שירותי בריאות — שקיפות עורפית</a></li>
+<li><a href="https://www.kolzchut.org.il/he/בדיקות_במהלך_ההריון" target="_blank" rel="noopener">כל זכות — בדיקות במהלך ההריון</a></li>
+</ul>
+<p>הסקירה נכתבה למטרות לימוד ואינה תחליף לייעוץ רפואי.</p>
+</section>
+</main>
+
+<footer>
+  השיעור נכתב למטרות לימוד ואינו תחליף לייעוץ רפואי.
+</footer>
+
+</body>
+</html>
